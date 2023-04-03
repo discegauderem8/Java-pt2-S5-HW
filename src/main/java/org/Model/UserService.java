@@ -8,11 +8,8 @@ import java.util.Random;
 public class UserService implements DataService {
     Random random = new Random();
     @Override
-    public Student createStudent() {//тут создается дополнительный экземпляр
-        int factor1 = random.nextInt(1, 6);
-        int factor2 = random.nextInt(1, 6);
-
-        return new Student(new Date());
+    public Student createStudent() {//Это хороший класс, он реализует принципы инверсии зависимостей
+        return new Student(new Date());//и разделения интерфейса
     }
 
     @Override
@@ -30,9 +27,4 @@ public class UserService implements DataService {
         }
         return userList;
     }
-
-//    @Override
-//    public List<User> read(List<User> users) {
-//        return null;
-//    }
 }

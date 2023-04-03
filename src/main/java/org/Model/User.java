@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class User {
-    Date dateBirth;
-    String fio;
+public abstract class User {
+    Date dateBirth; //Это хороший класс, соответствует принципам единственной ответственности, открытости/закрытости
+    String fio; //и подстановки Лисков (см наследников)
     int ID;
     static ArrayList<Integer> usedIDs = new ArrayList<>();
     static int userCount = 0;

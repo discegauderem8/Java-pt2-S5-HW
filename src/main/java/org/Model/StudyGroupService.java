@@ -3,10 +3,10 @@ package org.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudyGroupService {
+public class StudyGroupService implements StudyGroupDataService {
 
-    public static int nextGroupID = 0;
-    private Teacher groupTeacher;
+    public static int nextGroupID = 0;//Это хороший класс, он соответствует принципу единственной ответственности,
+    private Teacher groupTeacher;//инверсии зависимостей и разделения интерфейса
     private List<Student> groupStudents;
 
     public StudyGroupService() {

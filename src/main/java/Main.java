@@ -1,14 +1,10 @@
 import Controller.Controller;
-import View.View;
-import org.Model.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import View.ConsoleView;
 
 public class Main {
     public static void main(String[] args) {
 
-        Controller c = new Controller();
+        Controller c = new Controller(new ConsoleView());
         c.execute();
     }
 }

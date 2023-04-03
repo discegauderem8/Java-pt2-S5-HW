@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class Teacher extends User {
 
-    private int exp;
-    private ArrayList<Integer> groups = new ArrayList<>();
+    private int exp; //Это хороший класс, соответствует принципам единственной ответственности, открытости/закрытости
+    private ArrayList<Integer> groups = new ArrayList<>();//и подстановки Лисков
 //    static int defaultTeacherIndex;
 
     public List<Integer> getGroups() {

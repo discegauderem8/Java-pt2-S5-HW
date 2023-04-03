@@ -1,6 +1,6 @@
 package Controller;
 
-import View.View;
+import View.ConsoleView;
 import org.Model.Student;
 import org.Model.StudyGroupService;
 import org.Model.Teacher;
@@ -12,13 +12,17 @@ import java.util.Scanner;
 
 public class Controller {
     ArrayList<ArrayList<User>> dataCollector = new ArrayList<>();
+    ConsoleView consoleView;
 
-    public Controller() {
-    }
+    public Controller(ConsoleView thisConsoleView) {//Передаем тип ConsoleView в качестве аргумента, чтобы избежать
+        this.consoleView = thisConsoleView;//ошибок при изменении типа вывода, а View, в свою очередь наследует
+    }                                      // от интерфейса ViewType.
+                                           //Похожее нам показывали на лекции как пример принципа инверсии зависимостей
+
 
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        View view = new View();
+//        View view = thisView;
         StudyGroupService sgs = new StudyGroupService();
 
         while (true) {
@@ -47,7 +51,7 @@ public class Controller {
                     System.out.println("Вы хотите вывести внесенные данные на экран? 1 - да, любая другая цифра - нет");
                     int decision2 = scanner.nextInt();
                     if (decision2 == 1) {
-                        System.out.println(view.userView(newStudyGroup));
+                        System.out.println(consoleView.print(newStudyGroup));
                     }
                 } else {
                     System.out.println("Вы достигли максимального числа групп");
@@ -73,14 +77,14 @@ public class Controller {
                     System.out.println("Вы хотите вывести внесенные данные на экран? 1 - да, любая другая цифра - нет");
                     int decision2 = scanner.nextInt();
                     if (decision2 == 1) {
-                        System.out.println(view.userView(theseNewStudyGroup));
+                        System.out.println(consoleView.print(theseNewStudyGroup));
                     }
                 }else {
                     System.out.println("Вы достигли максимального числа групп");
                 }
             } else if (decision == 3) {
                 for (ArrayList<User> subArray : dataCollector) {
-                    view.userView(subArray);
+                    consoleView.print(subArray);
                 }
             } else if (decision == 4) {
                 System.out.println("Введите ID искомой группы: ");

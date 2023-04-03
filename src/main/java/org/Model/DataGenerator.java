@@ -2,14 +2,16 @@ package org.Model;
 
 import java.util.Random;
 
-public class DataGenerator {
-    public String generateName() {
-        Random random = new Random();
-        int factor1 = random.nextInt(1, 6);
-        int factor2 = random.nextInt(1, 6);
+public class DataGenerator implements NameGenerationInterface {
+
+    @Override
+    public String generateName() { //Сделал отдельный интерфейс для генерации имени для реализации принципа
+        Random random = new Random(); // инверсии зависимости. Иными словами, нам не придется переписывать этот
+        int factor1 = random.nextInt(1, 6); // метод, если мы захотим расширить его функционал,
+        int factor2 = random.nextInt(1, 6); //мы сможем просто реализовать новые интерфейсы.
         StringBuilder strBld2 = new StringBuilder();
-        if (factor1 == 1) { //Почему-то switch(case) тут работает криво и разные имена нагромождаются в одно...
-            strBld2.append("Иван "); //(ниже закоменчен пример, почекай)
+        if (factor1 == 1) {
+            strBld2.append("Иван ");
         } else if (factor1 == 2) {
             strBld2.append("Александр ");
         } else if (factor1 == 3) {
@@ -19,33 +21,23 @@ public class DataGenerator {
         } else if (factor1 == 5) {
             strBld2.append("Алексей ");
         }
-
-        if (factor2 == 1) { //Почему-то switch(case) тут работает криво и разные имена нагромождаются в одно...
-            strBld2.append("Петров "); //(ниже закоменчен пример, почекай)
-        } else if (factor2 == 2) {
-            strBld2.append("Сидоров ");
-        } else if (factor2 == 3) {
-            strBld2.append("Иванов ");
-        } else if (factor2 == 4) {
-            strBld2.append("Романенко ");
-        } else if (factor2 == 5) {
-            strBld2.append("Мягков ");
+        switch (factor2) { //P.S. Еще я сделал нормальный свитч-кейс для фамилий)))))))))))))
+            case 1:
+                strBld2.append("Петров ");
+                break;
+            case 2:
+                strBld2.append("Сидоров ");
+                break;
+            case 3:
+                strBld2.append("Иванов ");
+                break;
+            case 4:
+                strBld2.append("Романенко ");
+                break;
+            case 5:
+                strBld2.append("Мягков ");
+                break;
         }
-//        switch (factor2) {
-//            case 1:
-//                strBld2.append("Петров ");
-//            case 2:
-//                strBld2.append("Сидоров ");
-//            case 3:
-//                strBld2.append("Иванов ");
-//            case 4:
-//                strBld2.append("Романенко ");
-//            case 5:
-//                strBld2.append("Мягков ");
-//        }
         return strBld2.toString();
     }
-
-
-
 }

@@ -6,12 +6,10 @@ import java.util.List;
 public class Student extends User{
 
     private String name;
-    private int groupID;
-//    static int defaultStudentIndex;
-
+    private int groupID; //Это хороший класс, соответствует принципу единственной ответственности
     public int getGroupID() {
         return groupID;
-    }
+    }//принципу открытости/закрытости и принципу подстановки Лисков
 
     public void setGroupID(int ID) {
         groupID = ID;
@@ -37,7 +35,5 @@ public class Student extends User{
     public Student(Date birthDate) {
         super(birthDate);
     }
-//    public Student(){
-//        super(new Date(), "unidentified_student_" + ++defaultStudentIndex);
-//    }
+
 }
